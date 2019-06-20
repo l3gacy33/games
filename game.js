@@ -15,15 +15,13 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(450, 550, 'coin');
-  createItem(150, 350, 'coin');
-  createItem(720, 250, 'coin');
-  createItem(250, 545, 'coin');
-  createItem(350, 500, 'coin');
-  createItem(550, 300, 'coin');
-  createItem(375, 150, 'coin');
-  createItem(600, 355, 'coin');
-  createItem(575, 595, 'coin');
+  createItem(100, 210, 'coin');
+  createItem(50, 115, 'coin');
+  createItem(200, 50, 'coin');
+  createItem(350, 140, 'coin');
+  createItem(475, 45, 'coin');
+  createItem(255, 450, 'coin');
+  createItem(500, 325, 'coin');
   createItem(32, 32, 'poison');
   createItem(32, 32, 'star');
   
@@ -32,12 +30,12 @@ function addItems() {
 // add platforms to the game
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(100, 250, 'platform2');
-  platforms.create(150, 150, 'platform');
+  platforms.create(100, 300, 'platform2');
+  platforms.create(50, 150, 'platform');
   platforms.create(200, 90, 'platform');
-  platforms.create(350, 100, 'platform');
-  platforms.create(475, 150, 'platform');
-  platforms.create(255, 500, 'platform2');
+  platforms.create(350, 250, 'platform');
+  platforms.create(475, 80, 'platform');
+  platforms.create(300, 500, 'platform2');
   platforms.create(500, 375, 'platform');
   platforms.setAll('body.immovable', true);
 }
@@ -62,7 +60,7 @@ function itemHandler(player, item) {
   item.kill();
   console.log(item.key)
   if (item.key === 'poison'){
-    currentScore = currentScore - 50; 
+    currentScore = currentScore - 175; 
   }
   if (item.key === 'star'){
     currentScore = currentScore + 20;
