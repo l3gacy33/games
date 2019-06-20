@@ -15,13 +15,30 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(375, 300, 'coin');
+  createItem(450, 550, 'coin');
+  createItem(150, 350, 'coin');
+  createItem(720, 250, 'coin');
+  createItem(250, 545, 'coin');
+  createItem(350, 500, 'coin');
+  createItem(550, 300, 'coin');
+  createItem(375, 150, 'coin');
+  createItem(600, 355, 'coin');
+  createItem(575, 595, 'coin');
+  createItem(32, 32, 'poison');
+  createItem(32, 32, 'star');
+  
 }
 
 // add platforms to the game
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(450, 150, 'platform');
+  platforms.create(100, 250, 'platform2');
+  platforms.create(150, 150, 'platform');
+  platforms.create(200, 90, 'platform');
+  platforms.create(350, 100, 'platform');
+  platforms.create(475, 150, 'platform');
+  platforms.create(255, 500, 'platform2');
+  platforms.create(500, 375, 'platform');
   platforms.setAll('body.immovable', true);
 }
 
@@ -43,8 +60,20 @@ function createBadge() {
 // when the player collects an item on the screen
 function itemHandler(player, item) {
   item.kill();
+  console.log(item.key)
+  if (item.key === 'poison'){
+    currentScore = currentScore - 50; 
+  }
+  if (item.key === 'star'){
+    currentScore = currentScore + 20;
+  }
+  // add 10 points if item is coin 
   currentScore = currentScore + 10;
-  if (currentScore === winningScore) {
+  // substract 20 points if iten is poison
+
+  // add 20 points if iten is star
+  currentScore = currentScore + 10;
+  if (currentScore === winningScore) { 
       createBadge();
   }
 }
@@ -65,11 +94,14 @@ window.onload = function () {
     
     //Load images
     game.load.image('platform', 'assets/platform_1.png');
+    game.load.image('platform2', 'assets/platform_2.png');
     
     //Load spritesheets
     game.load.spritesheet('player', 'assets/chalkers.png', 48, 62);
     game.load.spritesheet('coin', 'assets/coin.png', 36, 44);
     game.load.spritesheet('badge', 'assets/badge.png', 42, 54);
+    game.load.spritesheet('poison', 'assets/poison.png', 32, 32);
+    game.load.spritesheet('star', 'assets/star.png', 32, 32);
   }
 
   // initial game set up
